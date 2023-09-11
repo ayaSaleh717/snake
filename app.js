@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div')
     const scoreDisplay = document.querySelector('span')
     const startBtn = document.querySelector('.start')
+    const scor = document.querySelector('.score')
   
     const width = 10
     let currentIndex = 0 //so first div in our grid
@@ -12,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let speed = 0.9
     let intervalTime = 0
     let interval = 0
+
+
+    const btn1 = document.querySelector('.btn1')
+    const btn2 = document.querySelector('.btn2')
+    const btn3 = document.querySelector('.btn3')
+     const btn4 = document.querySelector('.btn4')
+   
   
   
     //to start, and restart the game
@@ -42,7 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         (currentSnake[0] - width < 0 && direction === -width) ||  //if snake hits the top
         squares[currentSnake[0] + direction].classList.contains('snake') //if snake goes into itself
       ) {
+        
         return clearInterval(interval) //this will clear the interval if any of the above happen
+        // scor.innerHTML="GameOver"
+        // console.log("GameOver")
       }
   
       const tail = currentSnake.pop() //removes last ite of the array and shows it
@@ -72,7 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } while(squares[appleIndex].classList.contains('snake')) //making sure apples dont appear on the snake
       squares[appleIndex].classList.add('apple')
     }
+
+    //======================
   
+
   
     //assign functions to keycodes
     function control(e) {
@@ -85,10 +99,32 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (e.keyCode === 37) {
         direction = -1 // if we press left, the snake will go left one div
       } else if (e.keyCode === 40) {
-        direction = +width //if we press down, the snake head will instantly appear in the div ten divs from where you are now
+        direction = width//if we press down, the snake head will instantly appear in the div ten divs from where you are now
       }
+
     }
+    function fun1(){
+      direction = -width
+    
+    }
+    function fun2(){
+      direction = width
+    }
+    function fun3(){
+      direction = 1 
+    }
+    function fun4(){
+      direction = -1
+    }
+  
+  
+    btn1.addEventListener('click', fun1)//up
+    btn2.addEventListener('click', fun2)//down
+    btn3.addEventListener('click', fun3)//right
+    btn4.addEventListener('click', fun4)//left
+
   
     document.addEventListener('keyup', control)
     startBtn.addEventListener('click', startGame)
+    
   })

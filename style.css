@@ -59,3 +59,9 @@ button {
   background-color: rgb(123, 181, 219);
   border-style: dashed;
 }
+
+i{
+  font-weight: 400;
+  size: 10px;
+  background-color: transparent;
+}
